@@ -1,0 +1,44 @@
+{
+    "kind": "collectionType",
+    "collectionName": "items",
+    "info": {
+        "singularName": "item",
+        "pluralName": "items",
+        "displayName": "item"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "shortDescription": {
+            "type": "blocks"
+        },
+        "longdescription": {
+            "type": "blocks"
+        },
+        "price": {
+            "type": "decimal"
+        },
+        "image": {
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ],
+            "type": "media",
+            "multiple": false
+        },
+        "category": {
+            "type": "enumeration",
+            "enum": [
+                "newArrivals",
+                "bestSellers",
+                "topRated"
+            ]
+        }
+    }
+}
