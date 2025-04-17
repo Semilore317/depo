@@ -1,11 +1,9 @@
+import TopCarousel from './TopCarousel';
+
 const Home = () => {
     return (
-        <div>
-            Home 
-            <p>
-
-            &#9774
-            </p>
+        <div className='home'>
+            <TopCarousel />
         </div>
     )
 }
