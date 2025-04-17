@@ -4,7 +4,7 @@ const initialState = {
     isCartOpen: false,
     cart: [],
     items: [],
-}
+};
 
 export const cartSlice = createSlice({
     name: 'cart',
@@ -19,40 +19,41 @@ export const cartSlice = createSlice({
         },
         
         removeFromCart: (state, action) => {
-            state.cart = state.cart.filter((item) => item.id !== action.payload.item.id);
+            state.cart = state.cart.filter((item) => item.id !== action.payload.id);
         },
 
-        increaseCount: (state,action) =>{
+        increaseCount: (state, action) => {
             state.cart = state.cart.map((item) => {
-                if(item.id === action.payload.item.id){
+                if (item.id === action.payload.id) {
                     return {
                         ...item,
                         count: item.count + 1
-                    }
+                    };
                 }
                 return item;
-            })
+            });
         },
 
-        decreaseCount: (state,action) =>{
+        decreaseCount: (state, action) => {
             state.cart = state.cart.map((item) => {
-                if(item.id === action.payload.item.id && item.count > 1){ //no negative count
+                if (item.id === action.payload.id && item.count > 1) {
                     return {
                         ...item,
                         count: item.count - 1
-                    }
+                    };
                 }
                 return item;
-            })
-        }},
+            });
+        },
 
-        setIsCartOpen: (state) =>{
-            state.isCartOpen = !state.isCartOpen;
+        setIsCartOpen: (state, action) => {
+            console.log('setIsCartOpen payload:', action.payload); // Debug
+            state.isCartOpen = action.payload;
         }
+    }
 });
 
-
-export const{
+export const {
     setItems,
     addToCart,
     removeFromCart,

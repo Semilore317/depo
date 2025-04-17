@@ -1,7 +1,11 @@
 const Home = () => {
     return (
         <div>
-            Home
+            Home 
+            <p>
+
+            &#9774
+            </p>
         </div>
     )
 }

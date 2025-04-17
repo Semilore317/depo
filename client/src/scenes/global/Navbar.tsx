@@ -21,7 +21,7 @@ import { setIsCartOpen } from '@/state';
 const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const cart  = useSelector((state) => state.cart.cart);
+    const cart = useSelector((state) => state.cart.cart);
 
     return (
         <Box
@@ -34,9 +34,9 @@ const Navbar = () => {
             top="0"
             left="0"
             zIndex="1"
-            >
+        >
             <Box display="flex" justifyContent="space-between" backgroundColor={shades.primary[500]} width="80%" margin='auto'>
-                
+
                 <IconButton onClick={() => navigate('/')} sx={{ color: 'white' }}>
                     <Typography variant="h4" fontWeight="bold">Nuvanté</Typography>
                 </IconButton>
@@ -45,12 +45,28 @@ const Navbar = () => {
                     <IconButton onClick={() => navigate('/search')} sx={{ color: 'white' }}>
                         <SearchOutlined />
                     </IconButton>
-                
-                    <IconButton onClick={() => navigate('/cart')} sx={{ color: 'white' }}>
-                        <Badge badgeContent={0} color="secondary">
-                            <ShoppingBagOutlined />
-                        </Badge>
-                    </IconButton>
+
+                    <Badge
+                      badgeContent={cart.length}  
+                      color="secondary"
+                      invisible={cart.length === 0}
+                      sx={{
+                        "&.MuiBadge-badge": {
+                            right: 5,
+                            top: 5,
+                            padding: "0 4px",
+                            height: "14px",
+                            minWidth: "13px",
+                        }
+                      }}
+                    > {/* floating red number */}
+                        <IconButton onClick={() => dispatch(setIsCartOpen({}))} sx={{ color: 'white' }}>
+                            <Badge badgeContent={0} color="secondary">
+                                <ShoppingBagOutlined />
+                            </Badge>
+                        </IconButton>
+                    </Badge>
+
 
                     <IconButton onClick={() => navigate('/login')} sx={{ color: 'white' }}>
                         <PersonOutline />
