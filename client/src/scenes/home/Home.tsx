@@ -1,4 +1,5 @@
 import ShoppingList from './ShoppingList';
+import Subscribe from './Subscribe';
 import TopCarousel from './TopCarousel';
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div className='home'>
             <TopCarousel />
             <ShoppingList />
+            <Subscribe />
         </div>
     )
 }

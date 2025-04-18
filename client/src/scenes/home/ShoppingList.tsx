@@ -64,7 +64,7 @@ const ShoppingList = () => {
         value={value}
         onChange={handleChange}
         centered
-        TabIndicatorProps={{ style: { background: '#000' } }}
+        TabIndicatorProps={{ sx: { display: isNonMobile ? "block" : "none" } }}
         textColor="primary"
       >
         <Tab label="ALL" value="all" />
@@ -84,14 +84,20 @@ const ShoppingList = () => {
       ) : (
         <Box
           mt="20px"
-          display="grid"
-          gridTemplateColumns={
-            isNonMobile ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)'
-          }
+          display="flex"
+          flexWrap="wrap"
           gap="20px"
+          justifyContent="center"
         >
           {filteredItems().map((item) => (
-            <Item key={item.id} item={item} width="100%" />
+            <Box
+              key={item.id}
+              minWidth="250px"
+              flex="1 1 250px"
+              maxWidth="300px"
+            >
+              <Item item={item} width="100%" />
+            </Box>
           ))}
         </Box>
       )}
